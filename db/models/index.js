@@ -15,3 +15,6 @@ const Student = require('./student');
 
 Student.belongsTo(Campus);
 
+module.exports = {
+	Campus, Student
+};

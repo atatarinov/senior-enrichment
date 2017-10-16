@@ -8,11 +8,9 @@ let Campus = db.define('campus', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  image: {
-    type: DataTypes.VIRTUAL,
-    get: function () {
-      return `../../src/img/${this.name}.jpeg`;
-    }
+  photo: {
+    type: DataTypes.STRING
+    // defaultValue: `../../src/img/${this.name}.jpeg`
   }
   //should probably be changed
 });
