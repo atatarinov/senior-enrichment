@@ -1,12 +1,13 @@
 {
   "name": "alex_senior_enrichment",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A review time project",
   "main": "index.js",
   "scripts": {
     "test": "mocha **/*.test.js *.test.js",
     "build": "webpack",
     "build-watch": "webpack -w",
+    "seed": "node seed",
     "start": "nodemon server/start.js"
   },
   "keywords": [
@@ -16,6 +17,7 @@
   ],
   "dependencies": {
     "body-parser": "^1.15.2",
+    "bluebird": "^2.10.2",
     "chalk": "^1.1.3",
     "express": "^4.14.0",
     "pg": "^6.1.0",
@@ -35,6 +37,8 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "cartoon-avatar": "^1.0.2",
+    "chance": "^0.8.0",
     "volleyball": "^1.4.1",
     "webpack": "^3.5.5"
   }

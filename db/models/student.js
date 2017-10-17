@@ -7,7 +7,8 @@ let Student = db.define('student', {
     allowNull: false
   },
   email: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false
   }
 });
 
