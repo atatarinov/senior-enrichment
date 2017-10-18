@@ -10,7 +10,7 @@ export default (props) => {
       {
         campuses.map(campus => {
           return (
-            <div key={campus.id} className="col-xs-4">
+            <div key={campus.id} className="col-xs-3">
               <a className="thumbnail" href="#">
                 <img src={campus.photo} />
                 <div className="caption">

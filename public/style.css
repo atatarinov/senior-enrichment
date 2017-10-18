@@ -2,7 +2,6 @@ body {
   background: lightblue;
 }
 
-
 .campuses {
   border: solid grey 2px;
 }
@@ -11,7 +10,3 @@ body {
   text-align: center;
 }
 
-
-a {
-  text-decoration: none;
-}

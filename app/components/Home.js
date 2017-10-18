@@ -10,8 +10,9 @@ export default class Main extends Component {
     super();
     this.state = {
       campuses: [],
-      students: []
+      selectedCampus: {}
     };
+    this.deselectCampus = this.deselectCampus.bind(this);
   }
 
   componentDidMount() {
@@ -20,6 +21,10 @@ export default class Main extends Component {
       .then(campuses => {
         this.setState({ campuses });
       });
+  }
+
+  deselectCampus() {
+    this.setState({selectedCampus: {}});
   }
 
   render() {
