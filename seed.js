@@ -7,7 +7,7 @@
 // const db = require('./db');
 // const Student = require('./db/models');
 
-// const numStudent = 100;
+// const numStudent = 20;
 
 
 // const emails = chance.unique(chance.email, numStudent);

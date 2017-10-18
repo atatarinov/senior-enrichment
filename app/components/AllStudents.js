@@ -21,7 +21,7 @@ export default class getAllStudents extends Component {
   render() {
     const students = this.state.students;
     return (
-      <div>
+      <div className="col-xs-10">
         {
           students.map(student => {
             return <h4 key={student.id}>{student.name}</h4>;
@@ -30,5 +30,4 @@ export default class getAllStudents extends Component {
       </div>
     );
   }
-
 }

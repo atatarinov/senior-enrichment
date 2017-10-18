@@ -4,6 +4,7 @@ import axios from 'axios';
 import Campuses from './Campuses';
 import AllStudents from './AllStudents';
 import Navbar from './Navbar';
+import SingleCampus from './SingleCampus';
 
 export default class Main extends Component {
   constructor() {
@@ -13,6 +14,7 @@ export default class Main extends Component {
       selectedCampus: {}
     };
     this.deselectCampus = this.deselectCampus.bind(this);
+    this.selectCampus = this.selectCampus.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +25,12 @@ export default class Main extends Component {
       });
   }
 
+  selectCampus(campus) {
+    axios.get(`/api/campuses/${campus.id}`)
+      .then(res => res.data)
+      .then(campus => this.setState({selectedCampus: campus}));
+  }
+
   deselectCampus() {
     this.setState({selectedCampus: {}});
   }
@@ -30,9 +38,12 @@ export default class Main extends Component {
   render() {
     return (
       <div>
-      <Navbar />
-      <Campuses campuses={this.state.campuses} />
-        <AllStudents />
+      <Navbar home={this.deselectCampus} />
+      {
+        this.state.selectedCampus.id ? <SingleCampus campus={this.state.selectedCampus} /> :
+        <Campuses selectCampus={this.selectCampus} campuses={this.state.campuses} />
+      }
+      <AllStudents />
       </div>
     );
   }

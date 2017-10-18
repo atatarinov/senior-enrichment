@@ -1,8 +1,7 @@
 'use strict';
 import React from 'react';
 
-export default () => {
-
+export default (props) => {
   return (
     <nav className="navbar navbar-default">
       <div className="container-fluid">
@@ -11,15 +10,16 @@ export default () => {
         </div>
         <div>
           <ul className="nav navbar-nav">
-            <li className="active"><a href="#">Home</a></li>
-            <li><a href="#">Students</a></li>
+            <li onClick={props.home} className="active" id="home"><a href="#">Home</a></li>
+            <li><a href="#" id="students">Students</a></li>
           </ul>
         </div>
-
       </div>
     </nav>
   )
 }
+
+
 
 
 
