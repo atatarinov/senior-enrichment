@@ -11,7 +11,7 @@ const Student = models.Student;
 // If you aren't getting to this object, but rather the index.html (something with a joke) your path is wrong.
 // I know this because we automatically send index.html for all requests that don't make sense in our backend.
 // Ideally you would have something to handle this, so if you have time try that out!
-api.get('/hello', (req, res) => res.send({ hello: 'world' }))
+// api.get('/hello', (req, res) => res.send({ hello: 'world' }))
 
 
 api.get('/campuses', (req, res, next) => {
@@ -67,11 +67,7 @@ api.post('/students/create', (req, res, next) => {
 });
 
 api.put('/students/update', (req, res, next) => {
-	Student.findOne({
-		where: {
-			name: req.body.name
-		}
-	})
+	Student.findById(req.body.id)
 		.then(student => {
 			return student.update(req.body);
 		})
@@ -82,11 +78,7 @@ api.put('/students/update', (req, res, next) => {
 });
 
 api.put('/campuses/update', (req, res, next) => {
-	Campus.findOne({
-		where: {
-			name: req.body.name
-		}
-	})
+	Campus.findById(req.body.id)
 		.then(campus => {
 			return campus.update(req.body);
 		})
@@ -115,15 +107,9 @@ api.delete('/students/delete', (req, res, next) => {
 		}
 	})
 	.then(() => {
-		console.log('******* == deleted');
 		res.status(200).json('Student Successfully Destroyed');
 	})
 	.catch(next);
-});
-
-
-api.use(function(err, req, res, next) {
-	res.send(err);
 });
 
 

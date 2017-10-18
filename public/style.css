@@ -1,0 +1,17 @@
+body {
+  background: lightblue;
+}
+
+
+.campuses {
+  border: solid grey 2px;
+}
+
+.caption {
+  text-align: center;
+}
+
+
+a {
+  text-decoration: none;
+}

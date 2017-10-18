@@ -2,7 +2,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import Root from './components/Root';
+import Home from './components/Home';
 
 // import { Provider } from 'react-redux'
 
@@ -12,6 +12,6 @@ import Root from './components/Root';
 render (
   // <Provider store={store}>
   // </Provider>,
-  <Root />,
+  <Home />,
   document.getElementById('main')
 );

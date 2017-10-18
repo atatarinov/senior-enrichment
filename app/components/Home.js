@@ -1,16 +1,35 @@
+'use strict';
 import React, { Component } from 'react';
+import axios from 'axios';
+import Campuses from './Campuses';
+import AllStudents from './AllStudents';
+import Navbar from './Navbar';
 
 export default class Main extends Component {
   constructor() {
     super();
+    this.state = {
+      campuses: [],
+      students: []
+    };
+  }
+
+  componentDidMount() {
+    axios.get('/api/campuses')
+      .then(res => res.data)
+      .then(campuses => {
+        this.setState({ campuses });
+      });
   }
 
   render() {
     return (
       <div>
-        <h1>Hello There!!</h1>
+      <Navbar />
+      <Campuses campuses={this.state.campuses} />
+        <AllStudents />
       </div>
-    )
+    );
   }
 }
 
