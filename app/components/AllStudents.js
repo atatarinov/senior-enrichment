@@ -1,5 +1,6 @@
 'use strict';
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 export default class getAllStudents extends Component {
@@ -22,12 +23,42 @@ export default class getAllStudents extends Component {
     const students = this.state.students;
     return (
       <div className="col-xs-10">
-        {
-          students.map(student => {
-            return <h4 key={student.id}>{student.name}</h4>;
-          })
-        }
+
+
+       <table className='table'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Student Name</th>
+              <th>Student Campus</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              students.map((student, index) => {
+                return (
+                  <tr key={student.id}>
+                    <td>{index +1}</td>
+                    <td><Link to={`students/${student.id}`}>{student.name}</Link></td>
+                    <td><Link to="">{student.campusId}</Link></td>
+                  </tr>
+                );
+              })
+            }
+          </tbody>
+        </table>
+
+
+
+
+
+
+
+
+
       </div>
     );
   }
 }
+
+

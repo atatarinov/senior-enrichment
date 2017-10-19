@@ -3,7 +3,7 @@
 const db = require('../../db');
 const DataTypes = db.Sequelize;
 
-let Campus = db.define('campus', {
+const Campus = db.define('campus', {
   name: {
     type: DataTypes.STRING,
     allowNull: false

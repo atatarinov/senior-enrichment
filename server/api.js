@@ -50,6 +50,13 @@ api.get('/students/:studentId', (req, res, next) => {
 		.catch(next);
 });
 
+//*****
+api.get('/:studentId/campuses', (req, res, next) => {
+	req.student.getCampus()
+		.then(campus => res.json(campus))
+		.catch(next);
+});
+
 api.post('/campuses/create', (req, res, next) => {
 	Campus.create(req.body)
 		.then(campus => {

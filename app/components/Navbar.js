@@ -1,7 +1,9 @@
 'use strict';
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-export default (props) => {
+export default () => {
+
   return (
     <nav className="navbar navbar-default">
       <div className="container-fluid">
@@ -10,8 +12,8 @@ export default (props) => {
         </div>
         <div>
           <ul className="nav navbar-nav">
-            <li onClick={props.home} className="active" id="home"><a href="#">Home</a></li>
-            <li><a href="#" id="students">Students</a></li>
+            <li className="active" id="home"><Link to="/campuses">Home</Link></li>
+            <li><Link to="/students">Students</Link></li>
           </ul>
         </div>
       </div>

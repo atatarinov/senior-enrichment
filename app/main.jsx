@@ -1,6 +1,7 @@
-'use strict'
+'use strict';
 import React from 'react';
 import {render} from 'react-dom';
+import {BrowserRouter} from 'react-router-dom'
 
 import Home from './components/Home';
 
@@ -9,9 +10,9 @@ import Home from './components/Home';
 // import store from './store'
 // import Root from './components/Root'
 
-render (
-  // <Provider store={store}>
-  // </Provider>,
-  <Home />,
+render(
+  <BrowserRouter>
+    <Home />
+  </BrowserRouter>,
   document.getElementById('main')
 );

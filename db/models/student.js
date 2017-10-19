@@ -1,7 +1,7 @@
 const db = require('../../db');
 const DataTypes = db.Sequelize;
 
-let Student = db.define('student', {
+const Student = db.define('student', {
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -11,5 +11,17 @@ let Student = db.define('student', {
     allowNull: false
   }
 });
+
+Student.prototype.getCampus = function() {
+  return db.model('campus').findAll({
+    where: {studentId: this.id},
+    include: [{
+      model: db.model('song'),
+    }]
+  });
+}
+
+
+
 
 module.exports = Student;
