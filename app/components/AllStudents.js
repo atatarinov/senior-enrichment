@@ -23,6 +23,11 @@ export default class getAllStudents extends Component {
     const students = this.state.students;
     return (
       <div className="col-xs-10">
+        <Link to="/create-student">
+          <button id="create-campus">Create New Student</button>
+        </Link>
+
+
         <table className='table'>
           <thead>
             <tr>

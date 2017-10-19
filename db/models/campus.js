@@ -9,7 +9,8 @@ const Campus = db.define('campus', {
     allowNull: false
   },
   photo: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    defaultValue: '../../src/img/Galaxy.png'
   }
 });
 
