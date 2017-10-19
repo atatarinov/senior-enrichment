@@ -2,7 +2,7 @@
 const api = require('express').Router()
 const bodyParser = require('body-parser');
 bodyParser.urlencoded({extended: false});
-const db = require('../db')
+const db = require('../db');
 
 const models = require('../db/models');
 const Campus = models.Campus;
@@ -15,7 +15,9 @@ const Student = models.Student;
 
 
 api.get('/campuses', (req, res, next) => {
-	Campus.findAll({})
+	Campus.findAll({
+		include: [Student]
+	})
 		.then(campuses => {
 			res.json(campuses);
 		})
@@ -25,7 +27,7 @@ api.get('/campuses', (req, res, next) => {
 api.get('/campuses/:campusId', (req, res, next) => {
 	let id = req.params.campusId;
 
-	Campus.findById(id)
+	Campus.findById(id, {include: [Student]})
 		.then(campus => {
 			res.json(campus);
 		})
@@ -33,7 +35,7 @@ api.get('/campuses/:campusId', (req, res, next) => {
 });
 
 api.get('/students', (req, res, next) => {
-	Student.findAll({})
+	Student.findAll({ include: [Campus]})
 		.then(students => {
 			res.json(students);
 		})
@@ -43,7 +45,7 @@ api.get('/students', (req, res, next) => {
 api.get('/students/:studentId', (req, res, next) => {
 	let id = req.params.studentId;
 
-	Student.findById(id)
+	Student.findById(id, {include: [Campus]})
 		.then(student => {
 			res.json(student);
 		})
@@ -51,11 +53,15 @@ api.get('/students/:studentId', (req, res, next) => {
 });
 
 //*****
-api.get('/:studentId/campuses', (req, res, next) => {
-	req.student.getCampus()
-		.then(campus => res.json(campus))
-		.catch(next);
-});
+// api.get('/students/:studentId/campuses', (req, res, next) => {
+// 	console.log('*****', req.student);
+// 	req.student.getCampus()
+// 		.then(campus => {
+
+// 			res.json(campus)
+// 		})
+// 		.catch(next);
+// });
 
 api.post('/campuses/create', (req, res, next) => {
 	Campus.create(req.body)

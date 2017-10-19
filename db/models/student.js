@@ -12,14 +12,12 @@ const Student = db.define('student', {
   }
 });
 
-Student.prototype.getCampus = function() {
-  return db.model('campus').findAll({
-    where: {studentId: this.id},
-    include: [{
-      model: db.model('song'),
-    }]
-  });
-}
+// Student.prototype.getCampus = function() {
+//   return db.model('campus').findAll({
+//     where: {campusId: this.campusId}
+//   });
+// }
+
 
 
 
