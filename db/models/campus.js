@@ -10,7 +10,7 @@ const Campus = db.define('campus', {
   },
   photo: {
     type: DataTypes.STRING,
-    defaultValue: '../../src/img/Galaxy.png'
+    defaultValue: `http://www.pngall.com/wp-content/uploads/2016/07/Galaxy-Transparent.png`
   }
 });
 

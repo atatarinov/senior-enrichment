@@ -21,12 +21,6 @@ export default class Main extends Component {
     return (
       <div>
         <Navbar />
-
-        <Link to="/create-campus">
-          <button id="create-campus">Create New Campus</button>
-        </Link>
-
-
         <Route exact path="/" component={Campuses} />
         <Route exact path="/campuses" component={Campuses} />
         <Route path="/campuses/:campusId" component={SingleCampus} />
@@ -34,9 +28,6 @@ export default class Main extends Component {
         <Route path="/students/:studentId" component={SingleStudent} />
         <Route exact path="/create-campus" component={CreateCampus} />
         <Route exact path="/create-student" component={CreateStudent} />
-
-
-
 
       </div>
     );

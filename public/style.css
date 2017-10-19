@@ -22,3 +22,7 @@ body {
   margin-left: 20px;
   font-size: 16px;
 }
+
+#student-delete {
+  font-size: 10px;
+}

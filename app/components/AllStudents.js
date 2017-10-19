@@ -7,8 +7,10 @@ export default class getAllStudents extends Component {
   constructor() {
     super();
     this.state = {
-      students: []
+      students: [],
+      studentToDelete: undefined
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -19,15 +21,19 @@ export default class getAllStudents extends Component {
       });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(event)
+    // axios.delete('api/students/delete', this.state)
+    //   .then(campus => {
+    //     console.log('Success!!', campus);
+    //   })
+  }
+
   render() {
     const students = this.state.students;
     return (
       <div className="col-xs-10">
-        <Link to="/create-student">
-          <button id="create-campus">Create New Student</button>
-        </Link>
-
-
         <table className='table'>
           <thead>
             <tr>
@@ -42,7 +48,8 @@ export default class getAllStudents extends Component {
                 return (
                   <tr key={student.id}>
                     <td>{index + 1}</td>
-                    <td><Link to={`students/${student.id}`}>{student.name}</Link></td>
+                    <td><Link to={`students/${student.id}`}>{student.name}</Link>
+                    <form onSubmit={this.handleSubmit}><button type="submit" className="btn btn-danger btn-xs" id="student-delete">Delete</button></form></td>
                     <td><Link to={`campuses/${student.campusId}`}>{student.campus.name}</Link></td>
                   </tr>
                 );
@@ -50,6 +57,9 @@ export default class getAllStudents extends Component {
             }
           </tbody>
         </table>
+        <Link to="/create-student">
+          <button id="create-student">Create New Student</button>
+        </Link>
       </div>
     );
   }

@@ -52,17 +52,6 @@ api.get('/students/:studentId', (req, res, next) => {
 		.catch(next);
 });
 
-//*****
-// api.get('/students/:studentId/campuses', (req, res, next) => {
-// 	console.log('*****', req.student);
-// 	req.student.getCampus()
-// 		.then(campus => {
-
-// 			res.json(campus)
-// 		})
-// 		.catch(next);
-// });
-
 api.post('/campuses/create', (req, res, next) => {
 	Campus.create(req.body)
 		.then(campus => {
@@ -104,7 +93,7 @@ api.put('/campuses/update', (req, res, next) => {
 api.delete('/campuses/delete', (req, res, next) => {
 	Campus.destroy({
 		where: {
-			name: req.body.name
+			name: req.body.id
 		}
 	})
 	.then(() => {
@@ -116,7 +105,7 @@ api.delete('/campuses/delete', (req, res, next) => {
 api.delete('/students/delete', (req, res, next) => {
 	Student.destroy({
 		where: {
-			name: req.body.name
+			name: req.body.id
 		}
 	})
 	.then(() => {

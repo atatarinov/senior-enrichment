@@ -33,7 +33,7 @@ export default class extends Component {
 
 
   handleSubmit(event) {
-    event.preventDefault();
+    // event.preventDefault();
     console.log(this.state)
     axios.post('api/students/create', this.state)
       .then(student => {
