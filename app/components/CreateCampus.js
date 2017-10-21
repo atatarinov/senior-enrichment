@@ -1,6 +1,5 @@
 'use strict';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default class extends Component {
@@ -62,20 +61,3 @@ export default class extends Component {
   }
 
 }
-
-
-
-// <div>
-// <form onSubmit={this.handleSubmit}>
-//   <div>
-//     <label>Campus Name: </label>
-//     <input type="text" name="campusName" onChange={this.handleName} />
-//   </div>
-//   <br />
-//   <div>
-//     <label>Campus Photo: </label>
-//     <input type="text" name="campus" />
-//   </div>
-//   <button type="submit" id="campus-submit" >Submit</button>
-// </form>
-// </div>

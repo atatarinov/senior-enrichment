@@ -1,6 +1,6 @@
 'use strict';
 import React, { Component } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Campuses from './Campuses';
 import AllStudents from './AllStudents';
 import Navbar from './Navbar';

@@ -29,7 +29,7 @@ export default class SingleStudent extends Component {
     axios.delete(`/api/students/delete`, { data: student })
       .then(res => {
         console.log('Success!!');
-      })
+      });
   }
 
   render() {

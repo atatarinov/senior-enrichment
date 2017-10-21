@@ -11,14 +11,4 @@ const Student = db.define('student', {
   }
 });
 
-// Student.prototype.getCampus = function() {
-//   return db.model('campus').findAll({
-//     where: {campusId: this.campusId}
-//   });
-// }
-
-
-
-
-
 module.exports = Student;

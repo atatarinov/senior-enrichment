@@ -1,6 +1,5 @@
 'use strict';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -12,7 +11,6 @@ export default class extends Component {
       email: '',
       campusId: '',
       id: null
-
     }
     this.handleName = this.handleName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,7 +44,7 @@ export default class extends Component {
   }
 
   render() {
-    // console.log('in update', this.props.match.params.id)
+
     return (
       <div className="well">
         <form className="form-horizontal" onSubmit={this.handleSubmit}>

@@ -14,6 +14,7 @@ const Campus = db.define('campus', {
   }
 });
 
+
 // Campus.create({
 //   name: 'Luna',
 //   photo: `https://vignette.wikia.nocookie.net/warhammer40k/images/4/42/Luna.jpg/revision/latest/scale-to-width-down/620?cb=20110825142346`

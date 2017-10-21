@@ -23,7 +23,7 @@ export default class extends Component {
 
   removeStudent(id) {
     // preventDefault();
-    console.log(id)
+    // console.log(id)
     // this.setState({ id })
     // axios.delete(`api/students/delete`, this.state)
     //   .then(campus => {
