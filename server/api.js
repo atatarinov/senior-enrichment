@@ -69,6 +69,7 @@ api.post('/students/create', (req, res, next) => {
 });
 
 api.put('/students/update', (req, res, next) => {
+	console.log(req.body);
 	Student.findById(req.body.id)
 		.then(student => {
 			return student.update(req.body);
@@ -80,6 +81,7 @@ api.put('/students/update', (req, res, next) => {
 });
 
 api.put('/campuses/update', (req, res, next) => {
+	console.log(req.body)
 	Campus.findById(req.body.id)
 		.then(campus => {
 			return campus.update(req.body);
@@ -91,9 +93,10 @@ api.put('/campuses/update', (req, res, next) => {
 });
 
 api.delete('/campuses/delete', (req, res, next) => {
+	console.log(req.body)
 	Campus.destroy({
 		where: {
-			name: req.body.id
+			id: req.body.id
 		}
 	})
 	.then(() => {
@@ -105,7 +108,7 @@ api.delete('/campuses/delete', (req, res, next) => {
 api.delete('/students/delete', (req, res, next) => {
 	Student.destroy({
 		where: {
-			name: req.body.id
+			id: req.body.id
 		}
 	})
 	.then(() => {

@@ -8,7 +8,8 @@ export default class extends Component {
     super();
     this.state = {
       name: '',
-      photo: undefined
+      photo: undefined,
+      id: undefined
     }
     this.handleName = this.handleName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,8 +25,10 @@ export default class extends Component {
   }
 
   handleSubmit(event) {
-    // event.preventDefault();
-    axios.post('/api/campuses/create', this.state)
+    event.preventDefault();
+    let id = this.props.match.params.id
+    this.setState({id: id })
+    axios.put('/api/campuses/update', this.state)
       .then(campus => {
       })
   }
@@ -36,46 +39,28 @@ export default class extends Component {
       <div className="well">
       <form className="form-horizontal" onSubmit={this.handleSubmit}>
         <fieldset>
-          <legend>New Campus</legend>
+          <legend>Update Campus</legend>
           <div className="form-group">
-            <label className="col-xs-2 control-label">Campus Name</label>
+            <label className="col-xs-2 control-label">New Campus Name</label>
             <div className="col-xs-4">
               <input className="form-control" type="text" onChange={this.handleName} />
             </div>
           </div>
           <div className="form-group">
-          <label className="col-xs-2 control-label">Campus Photo</label>
+          <label className="col-xs-2 control-label">New Campus Photo</label>
           <div className="col-xs-4">
             <input className="form-control" type="text" onChange={this.handlePhoto} />
           </div>
         </div>
           <div className="form-group">
             <div className="col-xs-10 col-xs-offset-2">
-              <button type="submit" className="btn btn-success">Create Campus</button>
+              <button type="submit" className="btn btn-success">Update Campus</button>
             </div>
           </div>
         </fieldset>
       </form>
       </div>
-
     )
   }
 
 }
-
-
-
-// <div>
-// <form onSubmit={this.handleSubmit}>
-//   <div>
-//     <label>Campus Name: </label>
-//     <input type="text" name="campusName" onChange={this.handleName} />
-//   </div>
-//   <br />
-//   <div>
-//     <label>Campus Photo: </label>
-//     <input type="text" name="campus" />
-//   </div>
-//   <button type="submit" id="campus-submit" >Submit</button>
-// </form>
-// </div>

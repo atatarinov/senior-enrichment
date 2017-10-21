@@ -10,6 +10,7 @@ export default class SingleStudent extends Component {
       selectedStudent: {},
       selectedCampus: {}
     };
+    this.removeStudent = this.removeStudent.bind(this);
   }
 
   componentDidMount() {
@@ -17,18 +18,18 @@ export default class SingleStudent extends Component {
     axios.get(`/api/students/${studentId}`)
       .then(res => res.data)
       .then(student => {
-        this.setState({selectedStudent: student})
-        this.setState({selectedCampus: student.campus});
+        this.setState({ selectedStudent: student })
+        this.setState({ selectedCampus: student.campus });
       })
+  }
 
-    // const studentCampus = axios(`/campuses/${}`)
-    // const getStudentsCampus = axios.get(`api/students/${studentId}/campuses`);
-    // Promise.all([getStudent, getStudentsCampus])
-    //   .then(resArray => resArray.map(res => res.data))
-    //   .then(studentArr => {
-    //     let campusId = studentArr[0].campusId;
-    //     console.log(studentArr);
-
+  removeStudent() {
+    const student = this.state.selectedStudent;
+    console.log('sellllected', student);
+    axios.delete(`/api/students/delete`, { data: student })
+      .then(res => {
+        console.log('Success!!');
+      })
   }
 
   render() {
@@ -37,12 +38,19 @@ export default class SingleStudent extends Component {
     if (student.campus) {
       campusName = student.campus.name;
     }
-    // console.log('*******', student);
+    console.log('SELECTED STUDENT', student);
     return (
       <div className="album col-xs-4">
         <h3>Student's Name: {student.name}</h3>
         <h4>Student's Email: {student.email}</h4>
         <h4>Student's Campus: <Link to={`/campuses/${student.campusId}`}>{campusName}</Link></h4>
+
+        <Link to={`/update-student/${this.state.selectedStudent.id}`}>
+          <button type="button" className="btn btn-info">Update Student</button>
+        </Link>
+        <br/>
+        <br/>
+        <button type="button" className="btn btn-danger" onClick={this.removeStudent}>Delete Student</button>
       </div>
     )
   }

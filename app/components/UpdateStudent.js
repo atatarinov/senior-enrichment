@@ -10,7 +10,8 @@ export default class extends Component {
     this.state = {
       name: '',
       email: '',
-      campusId: undefined
+      campusId: '',
+      id: null
 
     }
     this.handleName = this.handleName.bind(this);
@@ -33,42 +34,45 @@ export default class extends Component {
 
 
   handleSubmit(event) {
-    // event.preventDefault();
-    console.log(this.state)
-    axios.post('api/students/create', this.state)
+    event.preventDefault();
+    let id = this.props.match.params.id
+    console.log(id)
+    this.setState({id: id })
+    console.log('STATE', this.state)
+    axios.put('/api/students/update', this.state)
       .then(student => {
         console.log('Success!!', student);
       })
   }
 
   render() {
-
+    // console.log('in update', this.props.match.params.id)
     return (
       <div className="well">
         <form className="form-horizontal" onSubmit={this.handleSubmit}>
           <fieldset>
-            <legend>New Student</legend>
+            <legend>Update Student</legend>
             <div className="form-group">
-              <label className="col-xs-2 control-label">Name</label>
+              <label className="col-xs-2 control-label">New Student Name</label>
               <div className="col-xs-4">
                 <input className="form-control" type="text" onChange={this.handleName} />
               </div>
             </div>
             <div className="form-group">
-              <label className="col-xs-2 control-label">Email</label>
+              <label className="col-xs-2 control-label">New Student Email</label>
               <div className="col-xs-4">
                 <input className="form-control" type="text" onChange={this.handleEmail} />
               </div>
             </div>
             <div className="form-group">
-              <label className="col-xs-2 control-label">Campus ID</label>
+              <label className="col-xs-2 control-label">New Student Campus ID</label>
               <div className="col-xs-4">
                 <input className="form-control" type="text" onChange={this.handleCampus} />
               </div>
             </div>
             <div className="form-group">
               <div className="col-xs-10 col-xs-offset-2">
-                <button type="submit" className="btn btn-success">Create Student</button>
+                <button type="submit" className="btn btn-success">Update Student</button>
               </div>
             </div>
           </fieldset>
@@ -77,27 +81,3 @@ export default class extends Component {
     )
   }
 }
-
-
-
-
-
-// <div>
-// <form onSubmit={this.handleSubmit}>
-//   <div>
-//     <label>Student Name: </label>
-//     <input type="text" name="studentName" onChange={this.handleName} />
-//   </div>
-//   <br />
-//   <div>
-//     <label>Student Email: </label>
-//     <input type="text" name="studentEmail" onChange={this.handleEmail} />
-//   </div>
-//   <br />
-//   <div>
-//     <label>Campus ID: </label>
-//     <input type="text" name="campusIs" onChange={this.handleCampus}/>
-//   </div>
-//   <button type="submit" id="campus-submit" >Submit</button>
-// </form>
-// </div>

@@ -8,6 +8,8 @@ import SingleCampus from './SingleCampus';
 import SingleStudent from './SingleStudent';
 import CreateCampus from './CreateCampus';
 import CreateStudent from './CreateStudent';
+import UpdateCampus from './UpdateCampus';
+import UpdateStudent from './UpdateStudent';
 
 
 export default class Main extends Component {
@@ -16,7 +18,6 @@ export default class Main extends Component {
   }
 
   render() {
-
 
     return (
       <div>
@@ -28,6 +29,8 @@ export default class Main extends Component {
         <Route path="/students/:studentId" component={SingleStudent} />
         <Route exact path="/create-campus" component={CreateCampus} />
         <Route exact path="/create-student" component={CreateStudent} />
+        <Route exact path="/update-campus/:id" component={UpdateCampus} />
+        <Route exact path="/update-student/:id" component={UpdateStudent} />
 
       </div>
     );

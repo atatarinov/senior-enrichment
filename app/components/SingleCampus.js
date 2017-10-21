@@ -9,6 +9,7 @@ export default class SingleAlbum extends Component {
     this.state = {
       selectedCampus: {}
     };
+    this.removeCampus = this.removeCampus.bind(this);
   }
 
   componentDidMount() {
@@ -16,6 +17,15 @@ export default class SingleAlbum extends Component {
     axios.get(`/api/campuses/${campusId}`)
     .then(res => res.data)
     .then(campus => this.setState({selectedCampus: campus}));
+  }
+
+  removeCampus() {
+    const campus = this.state.selectedCampus;
+    // console.log('sellllected', id);
+    axios.delete(`/api/campuses/delete`, {data: campus})
+    .then(res => {
+      console.log('Success!!');
+    })
   }
 
   render() {
@@ -26,6 +36,7 @@ export default class SingleAlbum extends Component {
         studentNames.push(campus.students[i]);
       }
     }
+
     return (
       <div className="album col-xs-4">
         <div>
@@ -56,8 +67,16 @@ export default class SingleAlbum extends Component {
             }
           </tbody>
         </table>
+        <Link to={`/update-campus/${this.state.selectedCampus.id}`}>
+          <button type="button" className="btn btn-info">Update Campus</button>
+        </Link>
+        <br/>
+        <br/>
+        <button type="button" className="btn btn-danger" onClick={this.removeCampus}>Delete Campus</button>
+
       </div>
     )
   }
 }
+
 

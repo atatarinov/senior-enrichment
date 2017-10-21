@@ -22,14 +22,15 @@ export default class Campuses extends Component {
   render() {
     const campuses = this.state.campuses;
     return (
-      <div>
-        <Link to="/create-campus">
-          <button id="create-campus">Create New Campus</button>
-        </Link>
+      <div className="container">
+        <Link to="/create-campus"
+        className="btn btn-primary btn-block">
+        <span className="glyphicon glyphicon-plus">
+        </span>Create New Campus</Link>
         {
           campuses.map(campus => {
             return (
-              <div key={campus.id} className="col-xs-3">
+              <div key={campus.id} className="col-md-4" id="campus">
                 <Link to={`/campuses/${campus.id}`} className="thumbnail" href="#">
                   <img src={campus.photo || 'http://www.pngall.com/wp-content/uploads/2016/07/Galaxy-Transparent.png'} />
                   <div className="caption">
@@ -44,3 +45,6 @@ export default class Campuses extends Component {
     );
   }
 }
+
+
+

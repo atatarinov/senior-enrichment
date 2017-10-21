@@ -26,3 +26,9 @@ body {
 #student-delete {
   font-size: 10px;
 }
+
+.btn-block {
+  display: block;
+  width: 15%;
+}
+

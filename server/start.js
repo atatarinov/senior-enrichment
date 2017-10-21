@@ -23,8 +23,17 @@ module.exports = app
 
 // notice the use of `_` as the first parameter above. This is a pattern for parameters that must exist, but you don't use or reference (or need) in the function body that follows.
 
+app.use((req, res, next) => {
+  const err = new Error('The page does not excist');
+  err.status = 404;
+  next(err);
+});
+
 app.use((err, req, res, next) => {
-  res.status(500).send(err.message);
+  res.status(err.status || 500)
+  res.render('error', {
+    error: err
+  });
 });
 
 

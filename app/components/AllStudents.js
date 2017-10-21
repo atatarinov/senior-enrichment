@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-export default class getAllStudents extends Component {
+export default class extends Component {
   constructor() {
     super();
     this.state = {
       students: [],
-      studentToDelete: undefined
+      id: undefined
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeStudent = this.removeStudent.bind(this);
   }
 
   componentDidMount() {
@@ -21,10 +21,11 @@ export default class getAllStudents extends Component {
       });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log(event)
-    // axios.delete('api/students/delete', this.state)
+  removeStudent(id) {
+    // preventDefault();
+    console.log(id)
+    // this.setState({ id })
+    // axios.delete(`api/students/delete`, this.state)
     //   .then(campus => {
     //     console.log('Success!!', campus);
     //   })
@@ -49,7 +50,7 @@ export default class getAllStudents extends Component {
                   <tr key={student.id}>
                     <td>{index + 1}</td>
                     <td><Link to={`students/${student.id}`}>{student.name}</Link>
-                    <form onSubmit={this.handleSubmit}><button type="submit" className="btn btn-danger btn-xs" id="student-delete">Delete</button></form></td>
+                    <form onSubmit={() => this.removeStudent(student.id)}><button type="submit" className="btn btn-danger btn-xs" id="student-delete">Delete</button></form></td>
                     <td><Link to={`campuses/${student.campusId}`}>{student.campus.name}</Link></td>
                   </tr>
                 );
@@ -57,8 +58,8 @@ export default class getAllStudents extends Component {
             }
           </tbody>
         </table>
-        <Link to="/create-student">
-          <button id="create-student">Create New Student</button>
+        <Link to="/create-student" className="btn btn-primary btn-block">
+          <span className="glyphicon glyphicon-plus"></span>Create New Student
         </Link>
       </div>
     );
