@@ -6,13 +6,26 @@ export default class extends Component {
   constructor() {
     super();
     this.state = {
+      id: '',
       name: '',
-      photo: undefined,
-      id: undefined
+      photo: ''
     }
     this.handleName = this.handleName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePhoto = this.handlePhoto.bind(this);
+  }
+
+  componentDidMount() {
+    const campusId = this.props.match.params.id;
+    axios.get(`/api/campuses/${campusId}`)
+    .then(res => res.data)
+    .then(campus => {
+      this.setState({
+        id: campus.id,
+        name: campus.name,
+        photo: campus.photo
+      });
+    });
   }
 
   handleName(event) {
@@ -25,10 +38,9 @@ export default class extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let id = this.props.match.params.id
-    this.setState({id: id })
     axios.put('/api/campuses/update', this.state)
       .then(campus => {
+        alert('Campus Updated!!');
       })
   }
 

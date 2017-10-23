@@ -25,10 +25,9 @@ export default class SingleStudent extends Component {
 
   removeStudent() {
     const student = this.state.selectedStudent;
-    console.log('sellllected', student);
     axios.delete(`/api/students/delete`, { data: student })
-      .then(res => {
-        console.log('Success!!');
+      .then(() => {
+        alert('Student Deleted');
       });
   }
 
@@ -38,7 +37,7 @@ export default class SingleStudent extends Component {
     if (student.campus) {
       campusName = student.campus.name;
     }
-    console.log('SELECTED STUDENT', student);
+
     return (
       <div className="album col-xs-4">
         <h3>Student's Name: {student.name}</h3>

@@ -21,11 +21,10 @@ export default class SingleAlbum extends Component {
 
   removeCampus() {
     const campus = this.state.selectedCampus;
-    // console.log('sellllected', id);
     axios.delete(`/api/campuses/delete`, {data: campus})
-    .then(res => {
-      console.log('Success!!');
-    })
+    .then(() => {
+      alert('Campus Deleted');
+    });
   }
 
   render() {

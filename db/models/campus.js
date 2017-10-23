@@ -14,7 +14,6 @@ const Campus = db.define('campus', {
   }
 });
 
-
 // Campus.create({
 //   name: 'Luna',
 //   photo: `https://vignette.wikia.nocookie.net/warhammer40k/images/4/42/Luna.jpg/revision/latest/scale-to-width-down/620?cb=20110825142346`
@@ -34,5 +33,8 @@ const Campus = db.define('campus', {
 //   name: 'Titan',
 //   photo: `https://www.nasa.gov/images/content/67887main_pia06139_detail.jpg`
 // });
+
+
+
 
 module.exports = Campus;

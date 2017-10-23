@@ -23,7 +23,7 @@ export default class extends Component {
   }
 
   handleSubmit(event) {
-    // event.preventDefault();
+    event.preventDefault();
     axios.post('/api/campuses/create', this.state)
       .then(campus => {
       })

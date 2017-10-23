@@ -7,15 +7,31 @@ export default class extends Component {
   constructor() {
     super();
     this.state = {
+      id: '',
       name: '',
       email: '',
-      campusId: '',
-      id: null
+      campusId: ''
     }
     this.handleName = this.handleName.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handleCampus = this.handleCampus.bind(this);
+  }
+
+  componentDidMount() {
+    const studentId = this.props.match.params.id;
+    console.log(studentId);
+    axios.get(`/api/students/${studentId}`)
+      .then(res => res.data)
+      .then(student => {
+        console.log('current student', student)
+        this.setState({
+          id: student.id,
+          name: student.name,
+          email: student.email,
+          campusId: student.campusId
+        })
+      })
   }
 
   handleName(event) {
@@ -30,16 +46,11 @@ export default class extends Component {
     this.setState({ campusId: event.target.value });
   }
 
-
   handleSubmit(event) {
     event.preventDefault();
-    let id = this.props.match.params.id
-    console.log(id)
-    this.setState({id: id })
-    console.log('STATE', this.state)
     axios.put('/api/students/update', this.state)
       .then(student => {
-        console.log('Success!!', student);
+        alert('Student Updated');
       })
   }
 
