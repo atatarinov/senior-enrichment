@@ -50,19 +50,19 @@ export default class extends Component {
             <div className="form-group">
               <label className="col-xs-2 control-label">Name</label>
               <div className="col-xs-4">
-                <input className="form-control" type="text" onChange={this.handleName} />
+                <input className="form-control" type="text" placeholder="Enter student name" onChange={this.handleName} />
               </div>
             </div>
             <div className="form-group">
               <label className="col-xs-2 control-label">Email</label>
               <div className="col-xs-4">
-                <input className="form-control" type="text" onChange={this.handleEmail} />
+                <input className="form-control" type="text" placeholder="Enter student email" onChange={this.handleEmail} />
               </div>
             </div>
             <div className="form-group">
               <label className="col-xs-2 control-label">Campus ID</label>
               <div className="col-xs-4">
-                <input className="form-control" type="text" onChange={this.handleCampus} />
+                <input className="form-control" type="text" placeholder="Enter student campus" onChange={this.handleCampus} />
               </div>
             </div>
             <div className="form-group">

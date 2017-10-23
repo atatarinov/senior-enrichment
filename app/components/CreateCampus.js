@@ -40,13 +40,13 @@ export default class extends Component {
           <div className="form-group">
             <label className="col-xs-2 control-label">Campus Name</label>
             <div className="col-xs-4">
-              <input className="form-control" type="text" onChange={this.handleName} />
+              <input className="form-control" type="text" placeholder="Enter campus name" onChange={this.handleName} />
             </div>
           </div>
           <div className="form-group">
           <label className="col-xs-2 control-label">Campus Photo</label>
           <div className="col-xs-4">
-            <input className="form-control" type="text" onChange={this.handlePhoto} />
+            <input className="form-control" type="text" placeholder="Enter campus photo" onChange={this.handlePhoto} />
           </div>
         </div>
           <div className="form-group">
