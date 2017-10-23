@@ -72,7 +72,6 @@ export default class SingleAlbum extends Component {
         <br/>
         <br/>
         <button type="button" className="btn btn-danger" onClick={this.removeCampus}>Delete Campus</button>
-
       </div>
     );
   }

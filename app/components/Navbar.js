@@ -8,7 +8,7 @@ export default () => {
     <nav className="navbar navbar-default">
       <div className="container-fluid">
         <div className="navbar-header">
-          <a className="navbar-brand">Margaret Hamilton Interplanetary Academy of JavaScript</a>
+          <Link to="/campuses" className="navbar-brand">Margaret Hamilton Interplanetary Academy of JavaScript</Link>
         </div>
         <div>
           <ul className="nav navbar-nav">

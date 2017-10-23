@@ -26,6 +26,7 @@ export default class extends Component {
     event.preventDefault();
     axios.post('/api/campuses/create', this.state)
       .then(campus => {
+        alert('Campus Created');
       })
   }
 
@@ -56,8 +57,6 @@ export default class extends Component {
         </fieldset>
       </form>
       </div>
-
     )
   }
-
 }

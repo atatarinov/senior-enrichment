@@ -36,7 +36,7 @@ export default class extends Component {
     console.log(this.state)
     axios.post('api/students/create', this.state)
       .then(student => {
-        console.log('Success!!', student);
+        alert('Student Created');
       })
   }
 
